@@ -1,0 +1,48 @@
+[2025-10-20 09:13:42] [INFO] Agent DBConnector initialized. Awaiting query request.
+[2025-10-20 09:13:45] [USER INPUT] "Muéstrame los cursos disponibles de Power BI con certificación."
+[2025-10-20 09:13:45] [DEBUG] Building SQL query...
+[2025-10-20 09:13:46] [SQL] SELECT nombre, certificacion, disponible FROM cursos WHERE tecnologia_id = 'Power BI';
+[2025-10-20 09:13:47] [INFO] Query executed successfully. 12 records retrieved.
+[2025-10-20 09:13:48] [LLM RESPONSE] “Encontré 12 cursos disponibles con certificación Power BI.”
+
+[2025-10-20 10:02:11] [INFO] Agent DBConnector received new query request.
+[2025-10-20 10:02:12] [USER INPUT] "Actualiza el estatus del curso 143 a inactivo."
+[2025-10-20 10:02:12] [DEBUG] Preparing SQL update...
+[2025-10-20 10:02:13] [SQL] UPDATE cursos SET estatus_curso = 'Inactivo' WHERE id = 143;
+[2025-10-20 10:02:14] [ERROR] SQLExecutionError: Cannot update record — permission denied.
+[2025-10-20 10:02:15] [LLM RESPONSE] “Parece que no tengo permisos para modificar ese curso.”
+
+[2025-10-20 10:45:03] [INFO] Agent received task to retrieve latest session info.
+[2025-10-20 10:45:04] [SQL] SELECT * FROM sesiones ORDER BY fecha_inicio DESC LIMIT 5;
+[2025-10-20 10:45:05] [INFO] Query returned 5 results.
+[2025-10-20 10:45:05] [LLM RESPONSE] “Aquí tienes las 5 sesiones más recientes.”
+
+[2025-10-20 11:07:58] [INFO] Agent initiated diagnostic routine.
+[2025-10-20 11:07:59] [DEBUG] Testing DB connection...
+[2025-10-20 11:08:00] [WARNING] Slow query detected (3.8s execution time)
+[2025-10-20 11:08:01] [SQL] SELECT COUNT(*) FROM usuarios WHERE activo = 1;
+[2025-10-20 11:08:04] [INFO] Query completed. 854 active users.
+[2025-10-20 11:08:04] [LLM RESPONSE] “La base de datos respondió con lentitud, pero se completó la consulta.”
+
+[2025-10-20 12:23:14] [USER INPUT] "Dame los cursos que requieren Scrum como prerequisito."
+[2025-10-20 12:23:14] [DEBUG] Tokenizing input for semantic retrieval...
+[2025-10-20 12:23:15] [SQL] SELECT nombre FROM cursos WHERE pre_requisitos LIKE '%Scrum%';
+[2025-10-20 12:23:17] [INFO] Query executed. 3 results found.
+[2025-10-20 12:23:18] [LLM RESPONSE] “Encontré tres cursos que tienen Scrum como prerequisito.”
+
+[2025-10-20 13:44:59] [INFO] Agent received malformed query input.
+[2025-10-20 13:45:00] [USER INPUT] "Muestra cursos, uh, los que están más recientes, pero sin los viejos."
+[2025-10-20 13:45:01] [DEBUG] Normalizing input text...
+[2025-10-20 13:45:02] [ERROR] LLM parser returned incomplete SQL fragment.
+[2025-10-20 13:45:03] [LLM RESPONSE] “No pude interpretar bien la consulta. ¿Podrías reformularla?”
+
+[2025-10-20 15:09:28] [INFO] New system event logged.
+[2025-10-20 15:09:29] [DEBUG] Agent heartbeat ping.
+[2025-10-20 15:09:30] [SQL] SELECT version FROM sistema WHERE componente = 'motor_inferencia';
+[2025-10-20 15:09:31] [INFO] Current version: v2.4.7
+[2025-10-20 15:09:32] [LLM RESPONSE] “El motor de inferencia está en la versión 2.4.7.”
+
+[2025-10-20 16:51:47] [INFO] Agent requested to clean temporary cache.
+[2025-10-20 16:51:48] [DEBUG] Running cleanup script...
+[2025-10-20 16:51:49] [ERROR] FileNotFoundError: /tmp/cache_logs/session_239.tmp not found.
+[2025-10-20 16:51:50] [LLM RESPONSE] “No se encontró el archivo temporal, pero la limpieza fue completada parcialmente.”

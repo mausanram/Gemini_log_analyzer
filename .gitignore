@@ -1,0 +1,16 @@
+# Ignorar entorno virtual
+venv/
+env/
+.env
+
+# Ignorar archivos de configuración de Python
+__pycache__/
+*.pyc
+
+# Ignorar configuraciones del IDE
+.vscode/
+.idea/
+
+# Seguridad 
+.env
+*.key
